@@ -1,6 +1,8 @@
     
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
+let score = 0;
+let Aux = true;
 
 const jump = () => {
 mario.classList.add('jump');
@@ -33,7 +35,21 @@ const loop = setInterval(() => {
         document.addEventListener('keydown',function(){
         location.reload();
         });
+        
+
     }
+    else{
+        if(pipePosition < 57 && Aux){
+            score++;
+            console.log(score);
+            document.getElementById("score").innerHTML = "Score : " + score;
+            Aux = false;
+        }
+        else if(pipePosition > 300){
+            Aux = true;
+        }
+    }
+    console.log(pipePosition);
 
 
 }, 10);
@@ -42,10 +58,6 @@ document.addEventListener('keydown', jump);
 
 document.addEventListener('keydown',function(){
     document.getElementById('audio').play();
-  });
-
-document.addEventListener('keydown',function(){
-    document.getElementById('audiojump').play();
   });
 
   
